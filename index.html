@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-  const unlockTime = new Date('2026-08-01T00:00:00').getTime();
-  if (Date.now() < unlockTime) {
-    window.location.href = 'locked.html';
-  }
-  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Swara</title>
@@ -16,6 +10,36 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="lockOverlay" style="
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(248, 237, 235, 0.96);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+">
+  <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 48px; color: #3e3232; margin-bottom: 8px;">
+    Not Yet, Swara! 🤫
+  </h1>
+  <p style="font-size: 18px; color: #a36f5c;">Unlocks automatically at midnight ❤️</p>
+</div>
+
+<script>
+  function checkUnlock() {
+    const unlockTime = new Date('2026-08-01T00:00:00').getTime();
+    if (Date.now() >= unlockTime) {
+      const overlay = document.getElementById('lockOverlay');
+      if (overlay) overlay.style.display = 'none';
+    }
+  }
+  checkUnlock();
+  setInterval(checkUnlock, 1000);
+</script>
   <div class="cursor-glow"></div>
   <div class="floating-bg"></div>
 
