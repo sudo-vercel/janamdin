@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  const unlockTime = new Date('2026-08-01T00:00:00').getTime();
+  if (Date.now() < unlockTime) {
+    window.location.href = 'locked.html';
+  }
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Swara</title>
